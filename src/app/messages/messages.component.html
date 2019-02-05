@@ -1,0 +1,16 @@
+<section *ngIf="messageService.messages.length">
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-12">
+          <button type="button" class="btn btn-danger" (click)="messageService.clear()">Clear</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div *ngFor="let message of messageService.messages" class="alert alert-primary" role="alert">
+          {{message}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<section>
+    <div class="container">
+        <blockquote class="blockquote text-center">
+            <h1>Agregar Articulo</h1>
+        </blockquote>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form id="spacing-form">
+                    <div class="form-group">
+                        <label for="inputAddress">Name</label>
+                        <input #articleName type="text" class="form-control" id="inputAddress" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Descripcion</label>
+                        <input #articleDescription type="text" class="form-control" id="inputAddress2" placeholder="descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Subir imagen del articulo</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                    <button (click)="add(articleName.value,articleDescription.value)" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </div>
+        <blockquote class="blockquote text-center">
+            <h1>Lista de Articulos</h1>
+        </blockquote>
+        <div class="spinner-border text-success" role="status" *ngIf="!cargar">
+            <span class="sr-only">Loading...</span>
+          </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3 mb-1" *ngFor="let article of articles">
+                <div class="card-deck" >
+                    <div class="card" routerLink="/detail/{{article._id}}">
+                        <img src="{{article.image}}" class="card-img-top" alt="..." width="100" height="200">
+                        <div class="card-body">
+                            <h5 class="card-title">{{article.name}}</h5>
+                            <p class="card-text">{{article.description}}</p>
+                            <div class="mx-auto">
+                                    <button type="button"(click)="delete(article)" class="btn btn-danger">ELiminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
